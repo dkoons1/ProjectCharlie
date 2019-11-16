@@ -1,5 +1,5 @@
 body {
-	background-color: #222629;
+	background: url('background.jpg');
 }
 .quote-button {
 	display: block;
@@ -10,9 +10,9 @@ body {
 	margin-right: auto;
 	border-color: #86c232;
 }
-.btn-primary {
+.btn-secondary {
 	align-content: center;
-	background-color: #6b6e70;
+	background-color: #474b4f;
 	align-items: center;
 	display: block;
 	align-self: center;
@@ -24,4 +24,7 @@ body {
 }
 .wrapper {
 	align-content: right;
+}
+#quoteButton {
+	background-color: #61892f;
 }
