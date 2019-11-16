@@ -1,0 +1,17 @@
+/* .div {
+	text-align: center;
+	display: block;
+} */
+
+.btn-primary {
+	align-content: center;
+	background-color: darkblue;
+	align-items: center;
+	display: block;
+	align-self: center;
+	object-position: right;
+	margin: 0;
+}
+.wrapper {
+	align-content: right;
+}

@@ -11,11 +11,12 @@
 			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 			crossorigin="anonymous"
 		/>
+<link rel="stylesheet" href="Style.css">
 	</head>
 	<body>
 
 <!-- Jumbotron -->
-    <div class="jumbotron" style="background-color: Gray; color: white">
+    <div class="jumbotron" style="background-color: rgb(80, 79, 77); color: white">
       <h1 class="text-center"> Lift.it </h1>
       <h4 class="text-center">Inspirational Quote</h4>
     </div>
@@ -23,6 +24,68 @@
     <div class="row">
 
       <div class="col-md-12">
-<button type="button" class="btn btn-outline-secondary">Secondary</button>
+
+
+<!-- Button trigger modal -->
+<wrapper>
+<button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#exampleModal">
+  Launch modal
+</button></wrapper>
+<br>
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Workout Table -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>Muscle Group</th>
+      <th>1st Movement</th>
+			<th>2nd Movement</th>
+			<th>3rd Movement</th>
+      <th>4th Movement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
   </body>
 </html>
