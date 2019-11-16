@@ -1,11 +1,18 @@
-/* .div {
-	text-align: center;
+body {
+	background-color: #222629;
+}
+.quote-button {
 	display: block;
-} */
-
+	align-self: center;
+	object-position: right;
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+	border-color: #86c232;
+}
 .btn-primary {
 	align-content: center;
-	background-color: darkblue;
+	background-color: #6b6e70;
 	align-items: center;
 	display: block;
 	align-self: center;
@@ -13,7 +20,7 @@
 	margin: 0;
 	margin-left: auto;
 	margin-right: auto;
-
+	border-color: #86c232;
 }
 .wrapper {
 	align-content: right;
