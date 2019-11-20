@@ -11,7 +11,7 @@ var d3 = $("<div>")
 var modalTest = $("#test");
 var saveChanges = $("#saveChanges")
 var closeButton = $("#closeButton")
-
+var muscleValue;
 modalTest.hide();
 var muscleCheck = 0;
 
@@ -71,7 +71,12 @@ closeButton.on("click", function(){
 })
 
 saveChanges.on("click", function(){
-    
+    $("#coolTable").append("<tr>" + 
+    "<th scope='row'>" + muscleValue + "</th>" +
+    "<td>" + first_exercise + "</td>" +
+    "<td>" + second_exercise + "</td>" +
+    "<td>" + third_exercise + "</td>" +
+    "</tr>")
 })
 
 $(document).on("click", ".exerciseMovement",function(){
@@ -126,7 +131,7 @@ $.ajax({
     $(document).on("click", ".muscleGroup",function(){
        // first_exercise = [];
         modalTest.show();
-        var muscleValue = $(this).val();
+        muscleValue = $(this).val();
         console.log(muscleValue)
         if(muscleValue == "Arms"){
             muscleCheck = 1;
