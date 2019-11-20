@@ -12,16 +12,22 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="Style.css">
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</head>
-	<body>
+
+<body>
 
 <!-- Jumbotron -->
-    <div class="jumbotron" style="background-color: rgb(80, 79, 77); color: white">
-      <h1 class="text-center"> Lift.it </h1>
-      <h4 class="text-center">Inspirational Quote</h4>
+<div class="container">
+<div class="jumbotron" style="background-color: #86C232; color: white">
+			<h1 class="text-center"> Lift.it </h1>
+
+<br>
+<button id="quoteButton" type="button" class="btn btn-light quote-button btn-sm">Quote</button>
+
     </div>
 
     <div class="row">
@@ -31,7 +37,9 @@
 
 <!-- Button trigger modal -->
 <wrapper>
-	<button id="modButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+
+	<button id="modButton" type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModal">
+
 		Launch demo modal
 	  </button>
 	</wrapper>
@@ -48,6 +56,7 @@
 		  </button>
 		</div>
 		<div class="modal-body">
+
 			<div id="muscleGroups">
 
 			</div>
@@ -55,18 +64,24 @@
 			<div id="test">
 
 			</div>
+
 		</div>
 		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
+		  <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button id="saveChanges" type="button" class="btn btn-primary">Save changes</button>
 		</div>
 	  </div>
 	</div>
   </div>
 
+<div id="test">
+
+</div>
+
 <!-- Workout Table -->
-<table class="table">
-  <thead>
+<div>
+<table style="background-color:#474b4f" class="table  table table-striped text-center">
+  <thead style="color:#86C232"; >
     <tr>
       <th>Muscle Group</th>
       <th>1st Movement</th>
@@ -75,22 +90,33 @@
       <th>4th Movement</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table table-bordered table-striped table-light text-left">
     <tr>
-      <th scope="row"></th>
+      <th scope="row">1</th>
       <td>Mark</td>
+			<td>Otto</td>
+			<td>Mark</td>
       <td>Otto</td>
     </tr>
     <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
-      <td>Thornton</td>
+			<td>Thornton</td>
+			<td>Mark</td>
+      <td>Otto</td>
+		</tr>
+		<tr>
+      <th scope="row">3</th>
+      <td>Jacob</td>
+			<td>Thornton</td>
+			<td>Mark</td>
+      <td>Otto</td>
     </tr>
   </tbody>
 </table>
 
-
-
+</div>
+</div>
 
 
 

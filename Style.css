@@ -1,11 +1,18 @@
-/* .div {
-	text-align: center;
+body {
+	background: url('background.jpg');
+}
+.quote-button {
 	display: block;
-} */
-
-.btn-primary {
+	align-self: center;
+	object-position: right;
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+	border-color: #86c232;
+}
+.btn-secondary {
 	align-content: center;
-	background-color: darkblue;
+	background-color: #474b4f;
 	align-items: center;
 	display: block;
 	align-self: center;
@@ -13,8 +20,11 @@
 	margin: 0;
 	margin-left: auto;
 	margin-right: auto;
-
+	border-color: #86c232;
 }
 .wrapper {
 	align-content: right;
+}
+#quoteButton {
+	background-color: #61892f;
 }
