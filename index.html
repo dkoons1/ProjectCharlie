@@ -26,10 +26,10 @@
 			<h1 class="text-center"> Lift.it </h1>
 
 <br>
-<button id="quoteButton" type="button" class="btn btn-light quote-button btn-sm">Quote</button>
-
+<div class="text-center">
+<p  id="randomQuote">testing</p>
     </div>
-
+</div>
     <div class="row">
 
       <div class="col-md-12">
@@ -67,8 +67,8 @@
 
 		</div>
 		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
+		  <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button id="saveChanges" type="button" class="btn btn-primary">Save changes</button>
 		</div>
 	  </div>
 	</div>
@@ -87,7 +87,7 @@
       <th>1st Movement</th>
 			<th>2nd Movement</th>
 			<th>3rd Movement</th>
-      <th>4th Movement</th>
+      <th>Total Time</th>
     </tr>
   </thead>
   <tbody class="table table-bordered table-striped table-light text-left">
@@ -114,13 +114,14 @@
     </tr>
   </tbody>
 </table>
-
+<canvas id="myChart" width="1600" height="900"></canvas>
 </div>
 </div>
 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
 <script src="script.js"></script>
+<script src="quotes.js"></script>
   </body>
 </html>
