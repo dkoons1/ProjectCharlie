@@ -1,9 +1,12 @@
 var modalMain = $("#muscleGroups");
 var modalButton = $("#modButton");
+var first_exercise = [];
+var second_exercise = [];
+var third_exercise = [];
 
 var modalTest = $("#test");
 modalTest.hide();
-
+var muscleCheck = 0;
 
 // function renderGroups() {
 //     for (var i = 0; i < muscleGroups.length; i++) {
@@ -19,13 +22,28 @@ modalTest.hide();
 
 
 
-
+function getExercises(){
+    var queryURL2 = "https://wger.de/api/v2/exercise?muscles=" + muscleCheck.toString() +  "&license_author=wger.de&language=2"
+    $.ajax({
+        url: queryURL2,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+        console.log(muscleCheck);               
+        for(var j = 0; j < response.results.length; j++){
+            var d1 = $("<div>")
+            var button = $("<button>");
+            button.text(response.results[j].name)
+            d1.append(button)
+            modalTest.append(d1)
+        }
+    })
+}
 
     
 
 // var queryURL = "https://wger.de/api/v2/exercise?language=2"
 var queryURL = "https://wger.de/api/v2/exercisecategory?language=2"
-
 
 $.ajax({
     url: queryURL,
@@ -47,26 +65,14 @@ $.ajax({
         }
 
     $(document).on("click", ".muscleGroup",function(){
+
         modalTest.show();
         var muscleValue = $(this).val();
         console.log(muscleValue)
-        var queryURL2 = "https://wger.de/api/v2/exercise?muscles=12&license_author=wger.de&language=2"
-        $.ajax({
-            url: queryURL2,
-            method: "GET"
-        }).then(function(response){
-            console.log(response);
-            for(var j = 0; j < response.results.length; j++){
-                var button = $("<button>");
-                var image = $("<img>")
-                image.attr("src", response.results[j].image)
-                image.attr("height", "30px");
-               // image.attr("width", "30px");
-                button.text("yeah");
-                //$(modalTest).append(button);
-                $(modalTest).append(image)
-            }
-        })
+        if(muscleValue == "Abs"){
+            muscleCheck = 6;
+            getExercises();
+        }
     }) 
 })
 
