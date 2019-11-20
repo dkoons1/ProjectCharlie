@@ -71,7 +71,7 @@ closeButton.on("click", function(){
 })
 
 saveChanges.on("click", function(){
-    $("#coolTable").append("<tr>" + 
+    $("#resultTable").append("<tr>" + 
     "<th scope='row'>" + muscleValue + "</th>" +
     "<td>" + first_exercise + "</td>" +
     "<td>" + second_exercise + "</td>" +
