@@ -4,10 +4,14 @@ var check = 0;
 var first_exercise;
 var second_exercise;
 var third_exercise;
+var first_submit;
+var second_submit;
+var third_submit;
 var exercises = [];
-var d1 = $("<div>")
-var d2 = $("<div>")
-var d3 = $("<div>")
+var d1 = $("#first")
+var d2 = $("#second")
+var d3 = $("#third")
+var submitTest = $("#submitTest")
 var modalTest = $("#test");
 var saveChanges = $("#saveChanges")
 var closeButton = $("#closeButton")
@@ -31,6 +35,8 @@ function getExercises(){
             button.text(response.results[j].name)
             button.val(response.results[j].name)
             button.attr("class", "exerciseMovement")
+            button.attr("padding-left", "2px")
+            button.attr("margin-right", "6px")
             exercises.push(button.val())
             if(check == 0){
                 d1.append(button)
@@ -53,14 +59,43 @@ function getExercises(){
 
 function restart(){
     saveChanges.hide();
+    submitTest.hide();
     check = 0;
     d1.empty();
     d2.empty();
     d3.empty();
+    d1.css("pointer-events","")
+    d2.css("pointer-events","")
+    d3.css("pointer-events","")
     first_exercise = "";
     second_exercise = "";
     third_exercise = "";
 }  
+
+$(".submitButton").on("click", function(){
+    event.preventDefault();
+    check++;
+   
+    if (check == 3){
+        third_submit = parseInt($("#submitInput").val())
+        d2.css("pointer-events","none")
+        saveChanges.show();
+        check = 0;  
+    }
+    else if (check == 1){
+        first_submit = parseInt($("#submitInput").val())
+        d1.css("pointer-events","none")
+        //submitTest.show();
+        submitTest.hide();
+        getExercises();
+    }
+    else if (check == 2){
+        second_submit = parseInt($("#submitInput").val())
+        d2.css("pointer-events","none")
+        submitTest.hide();
+        getExercises();
+    }
+})
 
 $("#modButton").on("click", function(){
     restart();
@@ -71,28 +106,28 @@ closeButton.on("click", function(){
 })
 
 saveChanges.on("click", function(){
+    var sum = first_submit + second_submit + third_submit;
     $("#resultTable").append("<tr>" + 
     "<th scope='row'>" + muscleValue + "</th>" +
     "<td>" + first_exercise + "</td>" +
     "<td>" + second_exercise + "</td>" +
     "<td>" + third_exercise + "</td>" +
+    "<td>" + sum + "</td>" +
     "</tr>")
 })
 
 $(document).on("click", ".exerciseMovement",function(){
-    check++;
-    if (check == 3){
+    submitTest.show();
+    if (check == 2){
         third_exercise = $(this).val()
-        saveChanges.show();
-        check = 0;  
+    }
+    else if (check == 0){
+        first_exercise = $(this).val()
+
     }
     else if (check == 1){
-        first_exercise = $(this).val()
-        getExercises();
-    }
-    else if (check == 2){
         second_exercise = $(this).val()
-        getExercises();
+
     }
     console.log(first_exercise)
     console.log(second_exercise)
@@ -130,6 +165,8 @@ $.ajax({
 
     $(document).on("click", ".muscleGroup",function(){
        // first_exercise = [];
+       restart();
+       modalTest.empty();
         modalTest.show();
         muscleValue = $(this).val();
         console.log(muscleValue)
