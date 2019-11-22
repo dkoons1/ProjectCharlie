@@ -30,7 +30,9 @@
 			<h1 class="text-center"> Lift.it </h1>
 
 <br>
-<button id="quoteButton" type="button" class="btn btn-light quote-button btn-sm">Quote</button>
+<!-- Random Quote API Display# -->
+
+<div   id="randomQuote" type="text-center" class="getPumped text-center">quotes here</div><br>
 
     </div>
 
@@ -44,58 +46,60 @@
 
 	<button id="modButton" type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModal">
 
-		Launch demo modal
+Add Workout
 	  </button>
 	</wrapper>
 <br>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
 	<div class="modal-dialog" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-
-			<div id="muscleGroups">
-
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
-			<br>
-			<div id="test">
-				<div id="first">
-
+			<div class="modal-body">
+				​
+				<div id="muscleGroups">
+					​
 				</div>
-
-				<div id="second">
-
+				<br>
+				<div id="test">
+					<div id="first">
+						​
+					</div>
+					​
+					<div id="second">
+						​
+					</div>
+					​
+					<div id="third">
+						​
+					</div>
 				</div>
-
-				<div id="third">
-
-				</div>
-			</div>
-
-			<div id="submitTest">
+				​
+				<div id="submitTest">
 					<label for="thirdInput">How much time for this exercise? (min)</label>
 					<input type="text" id="submitInput">
 					<input id="addThird" type="submit" class="submitButton">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button id="saveChanges" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
 			</div>
 		</div>
-		<div class="modal-footer">
-		  <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button id="saveChanges" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-		</div>
-	  </div>
 	</div>
   </div>
 
   <h3 style="color: white;">
     <span id="watchers"></span> people are visiting this site</span>
   </h3>
+
 <!-- Workout Table -->
 <div>
 <table style="background-color:#474b4f" class="table  table table-striped text-center">
@@ -105,41 +109,30 @@
       <th>1st Movement</th>
 			<th>2nd Movement</th>
 			<th>3rd Movement</th>
-      <th>4th Movement</th>
+      <th>Total Time</th>
     </tr>
   </thead>
+
   <tbody class="table table-bordered table-striped table-light text-left" id="resultTable">
+
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-			<td>Otto</td>
-			<td>Mark</td>
-      <td>Otto</td>
+      <th scope="row">Abs</th>
+      <td>Crunches</td>
+			<td>Sit-ups</td>
+			<td>Negative Crunches</td>
+      <td>30</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-			<td>Thornton</td>
-			<td>Mark</td>
-      <td>Otto</td>
-		</tr>
-		<tr>
-      <th scope="row">3</th>
-      <td>Jacob</td>
-			<td>Thornton</td>
-			<td>Mark</td>
-      <td>Otto</td>
-    </tr>
+
   </tbody>
 </table>
 <canvas id="myChart" width="1600" height="900"></canvas>
 </div>
 </div>
-
-
-
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
 
 <script src="script.js"></script>
+<script src="quotes.js"></script>
   </body>
 </html>
