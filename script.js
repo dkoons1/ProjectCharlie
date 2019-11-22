@@ -18,6 +18,19 @@ var closeButton = $("#closeButton")
 var muscleValue;
 modalTest.hide();
 var muscleCheck = 0;
+var timeTotal = 0;
+var workout = ["Workout"];
+// For drawing the lines
+var arms = [0];
+var legs = [0];
+var back = [0];
+var chest = [0];
+var abs = [0];
+var shoulders = [0];
+console.log(shoulders)
+var zero = [1];
+var ctx = document.getElementById("myChart");
+
 
 function getExercises(){
     var queryURL2 = "https://wger.de/api/v2/exercise?muscles=" + muscleCheck.toString() +  "&license_author=wger.de&language=2"
@@ -35,27 +48,83 @@ function getExercises(){
             button.text(response.results[j].name)
             button.val(response.results[j].name)
             button.attr("class", "exerciseMovement")
-            button.attr("padding-left", "2px")
-            button.attr("margin-right", "6px")
+            button.css("margin-right", "20px")
+            button.css("margin-bottom","10px")
+            // button.css("display","block")
             exercises.push(button.val())
             if(check == 0){
                 d1.append(button)
                 modalTest.append(d1)
+                $("#submitInput").val('')
             }
             else if(check == 1){
                 d2.append(button)
                 modalTest.append(d2)
-                
+                $("#submitInput").val('')
             }
             else if(check == 2){
                 d3.append(button)
                 modalTest.append(d3);
+                $("#submitInput").val('')
             }
         }
     })
 }
 
+function renderChart(){
 
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {	
+      labels: workout,
+      datasets: [
+        {
+          data: arms,
+          label: "Arms",
+          backgroundColor: "#8A2BE2",
+          fill: false
+        },
+        {
+            data: legs,
+            label: "Legs",
+            backgroundColor: "#3E95CD",
+            fill: false
+      },
+          {
+          data: back,
+            label: "Back",
+            backgroundColor: "#A52A2A",
+            fill: false
+        },
+                {
+          data: chest,
+            label: "Chest",
+            backgroundColor: "#0000FF",
+            fill: false
+        },
+                {
+          data: abs,
+            label: "Abs",
+            backgroundColor: "#00FFFF",
+            fill: false
+        },
+        {
+          data: shoulders,
+            label: "Shoulders",
+            backgroundColor: "#7FFF00",
+            fill: false
+        },
+            {
+          data: zero,
+            label: "0",
+            fill: false
+        },
+      ]
+    }
+  });
+
+}
+renderChart()
 
 function restart(){
     saveChanges.hide();
@@ -67,24 +136,29 @@ function restart(){
     d1.css("pointer-events","")
     d2.css("pointer-events","")
     d3.css("pointer-events","")
+    submitTest.css("pointer-events", "")
     first_exercise = "";
     second_exercise = "";
     third_exercise = "";
+    first_submit = "";
+    second_submit = "";
+    third_submit = "";
 }  
 
 $(".submitButton").on("click", function(){
     event.preventDefault();
     check++;
-   
     if (check == 3){
         third_submit = parseInt($("#submitInput").val())
-        d2.css("pointer-events","none")
+        d3.css("pointer-events","none")
         saveChanges.show();
+        submitTest.css("pointer-events", "none")
         check = 0;  
     }
     else if (check == 1){
         first_submit = parseInt($("#submitInput").val())
         d1.css("pointer-events","none")
+     //   d1.hide();
         //submitTest.show();
         submitTest.hide();
         getExercises();
@@ -92,6 +166,7 @@ $(".submitButton").on("click", function(){
     else if (check == 2){
         second_submit = parseInt($("#submitInput").val())
         d2.css("pointer-events","none")
+      //  d2.hide();
         submitTest.hide();
         getExercises();
     }
@@ -107,6 +182,13 @@ closeButton.on("click", function(){
 
 saveChanges.on("click", function(){
     var sum = first_submit + second_submit + third_submit;
+
+//     localStorage.clear();
+//     localStorage.setItem("muscleValue", muscleValue);
+//     localStorage.setItem("first_exercise", first_exercise);
+//     localStorage.setItem("age", age);
+//     localStorage.setItem("comment", comment);
+
     $("#resultTable").append("<tr>" + 
     "<th scope='row'>" + muscleValue + "</th>" +
     "<td>" + first_exercise + "</td>" +
@@ -114,6 +196,31 @@ saveChanges.on("click", function(){
     "<td>" + third_exercise + "</td>" +
     "<td>" + sum + "</td>" +
     "</tr>")
+
+    if(muscleCheck == 1){
+        arms[0] += sum;
+        renderChart();
+    }
+    else if(muscleCheck == 2){
+        shoulders[0] += sum;
+        renderChart();
+    }
+    else if(muscleCheck == 4){
+        chest[0] += sum;
+        renderChart();
+    }
+    else if(muscleCheck == 6){
+        abs[0] += sum;
+        renderChart();
+    }
+    else if(muscleCheck == 12){
+        back[0] += sum;
+        renderChart();
+    }
+    else if(muscleCheck == 10){
+        legs[0] += sum;
+        renderChart();
+    }
 })
 
 $(document).on("click", ".exerciseMovement",function(){
@@ -123,15 +230,13 @@ $(document).on("click", ".exerciseMovement",function(){
     }
     else if (check == 0){
         first_exercise = $(this).val()
-
     }
     else if (check == 1){
         second_exercise = $(this).val()
-
     }
-    console.log(first_exercise)
-    console.log(second_exercise)
-    console.log(third_exercise)
+  //  console.log(first_exercise)
+  //  console.log(second_exercise)
+  //  console.log(third_exercise)
 })
 
 // $(".close").on("click", function(){
@@ -169,7 +274,7 @@ $.ajax({
        modalTest.empty();
         modalTest.show();
         muscleValue = $(this).val();
-        console.log(muscleValue)
+    //    console.log(muscleValue)
         if(muscleValue == "Arms"){
             muscleCheck = 1;
             getExercises();
@@ -194,11 +299,6 @@ $.ajax({
             muscleCheck = 10;
             getExercises();
         }
-        else if(muscleValue == "Calves"){
-            muscleCheck = 15;
-            getExercises();
-        }
-
     }) 
 })
 
