@@ -18,17 +18,13 @@
 		/>
 		<link rel="stylesheet" href="Style.css" />
 
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-			crossorigin="anonymous"
-		></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
 	</head>
 
 	<body>
@@ -171,9 +167,46 @@
 				</div>
 			</div>
 		</div>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	</div>
+  </div>
 
-		<script src="script.js"></script>
-		<script src="quotes.js"></script>
-	</body>
+  <h3 style="color: white;">
+    <span id="watchers"></span> people are visiting this site</span>
+  </h3>
+
+<!-- Workout Table -->
+<div>
+<table style="background-color:#474b4f" class="table  table table-striped text-center">
+  <thead style="color:#86C232"; >
+    <tr>
+      <th>Muscle Group</th>
+      <th>1st Movement</th>
+			<th>2nd Movement</th>
+			<th>3rd Movement</th>
+      <th>Total Time</th>
+    </tr>
+  </thead>
+
+  <tbody class="table table-bordered table-striped table-light text-left" id="resultTable">
+
+    <tr>
+      <th scope="row">Abs</th>
+      <td>Crunches</td>
+			<td>Sit-ups</td>
+			<td>Negative Crunches</td>
+      <td>30</td>
+    </tr>
+
+  </tbody>
+</table>
+<canvas id="myChart" width="1600" height="900"></canvas>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+
+<script src="script.js"></script>
+<script src="quotes.js"></script>
+  </body>
 </html>
