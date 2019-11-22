@@ -1,13 +1,9 @@
 
 
 // 0352ff7299msh43077480e8043c9p18689ejsn933c8cc390b4
-// $(document).ready(function ()
-// {
-function randomQuote ()
-{
 
-}
-const settings = {
+//
+var settings = {
   "async": true,
   "crossDomain": true,
   "url": "https://type.fit/api/quotes",
@@ -16,10 +12,41 @@ const settings = {
 
 $.ajax(settings).done(function (response)
 {
-  const data = JSON.parse(response);
+  var data = JSON.parse(response);
   console.log(data);
 
+  {
 
-  $("#randomQuote").html("<p id= 'randomQuote'><i class =\"fa fa-quote-left\"></i>   " + quoteData.quoteText + "<br/> <div class=\"text-right\"> -" + quoteData.quoteAuthor + "<div></p>");
+    var queryURL = "https://type.fit/api/quotes";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .then(function (response)
+      {
+        // console.log(queryURL);
+        // console.log(response);
+
+        var text = $("<p>").text(response.text);
+        var author = $("<p>").text(response.author);
+        $("#randomQuote").html(response.text.author);
+        console.log(response.text.author)
+
+        for (var i = 0; i < results.length; i++) {
+
+
+          var randomQuote = $("<div>");
+          var q = $("<p>").text("text: " + results[i].author);
+
+          randomQuote.attr("src", results[i].quote.text.url);
+
+          randomQuote.append(p);
+          randomQuote.append(author);
+          console.log(response.text.author);
+          $("#randomQuote").prepend(randomQuote);
+        }
+      })
+  }
+
 });
-$()
