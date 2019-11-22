@@ -1,7 +1,17 @@
 var modalMain = $("#muscleGroups");
 var modalButton = $("#modButton");
-
+var check = 0;
+var first_exercise;
+var second_exercise;
+var third_exercise;
+var exercises = [];
+var d1 = $("<div>")
+var d2 = $("<div>")
+var d3 = $("<div>")
 var modalTest = $("#test");
+var saveChanges = $("#saveChanges")
+var closeButton = $("#closeButton")
+var muscleValue;
 modalTest.hide();
 var muscleCheck = 0;
 
@@ -42,16 +52,6 @@ function getExercises ()
 }
 
 
-// function renderGroups() {
-//     for (var i = 0; i < muscleGroups.length; i++) {
-//         var button = $("<button>")
-//         button.text(muscleGroups[i])
-//         button.attr("data-muscle", muscleGroups[i])
-//         button.val(muscleGroups[i])
-//         button.addClass("muscleGroup")
-//         $(modalMain).append(button)
-//     }
-// }
 
 function restart ()
 {
@@ -77,7 +77,7 @@ closeButton.on("click", function ()
 
 saveChanges.on("click", function ()
 {
-    $("#resultTable").append("<tr>" +
+    $("#coolTable").append("<tr>" +
         "<th scope='row'>" + muscleValue + "</th>" +
         "<td>" + first_exercise + "</td>" +
         "<td>" + second_exercise + "</td>" +
@@ -106,11 +106,13 @@ $(document).on("click", ".exerciseMovement", function ()
     console.log(third_exercise)
 })
 
+// $(".close").on("click", function(){
+//     restart();
+// })
 
+//var queryURL = "https://wger.de/api/v2/exercise?language=2"
 
-// var queryURL = "https://wger.de/api/v2/exercise?language=2"
 var queryURL = "https://wger.de/api/v2/exercisecategory?language=2"
-
 
 $.ajax({
     url: queryURL,
@@ -133,41 +135,41 @@ $.ajax({
             $(modalMain).append(button)
         }
     }
+})
 
-    $(document).on("click", ".muscleGroup", function ()
-    {
-        // first_exercise = [];
-        modalTest.show();
-        var muscleValue = $(this).val();
-        console.log(muscleValue)
-        if (muscleValue == "Arms") {
-            muscleCheck = 1;
-            getExercises();
-        }
-        else if (muscleValue == "Shoulders") {
-            muscleCheck = 2;
-            getExercises();
-        }
-        else if (muscleValue == "Chest") {
-            muscleCheck = 4;
-            getExercises();
-        }
-        else if (muscleValue == "Abs") {
-            muscleCheck = 6;
-            getExercises();
-        }
-        else if (muscleValue == "Back") {
-            muscleCheck = 12;
-            getExercises();
-        }
-        else if (muscleValue == "Legs") {
-            muscleCheck = 10;
-            getExercises();
-        }
-        else if (muscleValue == "Calves") {
-            muscleCheck = 15;
-            getExercises();
-        }
+$(document).on("click", ".muscleGroup", function ()
+{
+    // first_exercise = [];
+    modalTest.show();
+    muscleValue = $(this).val();
+    console.log(muscleValue)
+    if (muscleValue == "Arms") {
+        muscleCheck = 1;
+        getExercises();
+    }
+    else if (muscleValue == "Shoulders") {
+        muscleCheck = 2;
+        getExercises();
+    }
+    else if (muscleValue == "Chest") {
+        muscleCheck = 4;
+        getExercises();
+    }
+    else if (muscleValue == "Abs") {
+        muscleCheck = 6;
+        getExercises();
+    }
+    else if (muscleValue == "Back") {
+        muscleCheck = 12;
+        getExercises();
+    }
+    else if (muscleValue == "Legs") {
+        muscleCheck = 10;
+        getExercises();
+    }
+    else if (muscleValue == "Calves") {
+        muscleCheck = 15;
+        getExercises();
+    }
 
-    })
 })
