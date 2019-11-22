@@ -23,10 +23,10 @@ $.ajax({
     for (var i = 0; i < parsed.length; i++) {
 
 
-      var randomQuote = $("<div>");
-      var q = $("<p>").text("text: " + results[i].author);
+      // var randomQuote = $("<div>");
+      // var q = $("<p>").text("text: " + results[i].author);
 
-      randomQuote.attr("src", results[i].quote.text.url);
+      // randomQuote.attr("src", results[i].quote.text.url);
 
       randomQuote.append(p);
       randomQuote.append(author);
