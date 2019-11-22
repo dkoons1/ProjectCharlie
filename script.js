@@ -19,6 +19,7 @@ var muscleValue;
 modalTest.hide();
 var muscleCheck = 0;
 var timeTotal = 0;
+var arr = [];
 var workout = ["Workout"];
 // For drawing the lines
 var arms = [0];
@@ -122,8 +123,8 @@ var myChart = new Chart(ctx, {
       ]
     }
   });
-
 }
+
 renderChart()
 
 function restart(){
@@ -183,19 +184,27 @@ closeButton.on("click", function(){
 saveChanges.on("click", function(){
     var sum = first_submit + second_submit + third_submit;
 
-//     localStorage.clear();
-//     localStorage.setItem("muscleValue", muscleValue);
-//     localStorage.setItem("first_exercise", first_exercise);
-//     localStorage.setItem("age", age);
-//     localStorage.setItem("comment", comment);
+    localStorage.clear();
+    localStorage.setItem("muscleValue", muscleValue);
+    localStorage.setItem("first_exercise", first_exercise);
+    localStorage.setItem("second_exercise", second_exercise);
+    localStorage.setItem("third_exercise", third_exercise);
+    localStorage.setItem("sum", sum);
+    
 
-    $("#resultTable").append("<tr>" + 
-    "<th scope='row'>" + muscleValue + "</th>" +
-    "<td>" + first_exercise + "</td>" +
-    "<td>" + second_exercise + "</td>" +
-    "<td>" + third_exercise + "</td>" +
-    "<td>" + sum + "</td>" +
+    var tableRow = $("<tr>" + 
+    "<th scope='row'>" + localStorage.getItem("muscleValue") + "</th>" +
+    "<td>" + localStorage.getItem("first_exercise") + "</td>" +
+    "<td>" + localStorage.getItem("second_exercise") + "</td>" +
+    "<td>" + localStorage.getItem("third_exercise") + "</td>" +
+    "<td>" + localStorage.getItem("sum") + "</td>" +
     "</tr>")
+
+    localStorage.setItem( "tabledata", $("#resultTable").html() );
+
+    $("#resultTable").append(tableRow)
+
+
 
     if(muscleCheck == 1){
         arms[0] += sum;
@@ -230,9 +239,11 @@ $(document).on("click", ".exerciseMovement",function(){
     }
     else if (check == 0){
         first_exercise = $(this).val()
+        d1.append("<hr>")
     }
     else if (check == 1){
         second_exercise = $(this).val()
+        d2.append("<hr>")
     }
   //  console.log(first_exercise)
   //  console.log(second_exercise)
@@ -301,7 +312,6 @@ $.ajax({
         }
     }) 
 })
-
-
-
+var tabledata  = localStorage.getItem( "tabledata" );
+$("#resultTable").html( tabledata ); 
 
