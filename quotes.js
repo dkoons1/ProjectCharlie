@@ -11,24 +11,22 @@ $.ajax({
 })
   .then(function (response)
   {
-    console.log(queryURL);
-    console.log(response);
 
 
     var parsed = JSON.parse(response);
-
-    var text = $("<p>").text(parsed[0].text + " " + parsed[0].author);
-    var author = $("<p>").text(parsed[0].author);
+    var randomNumber = getRandomInt(parsed.length)
+    var text = $("<p>").text(parsed[randomNumber].text + " " + parsed[randomNumber].author);
+    var author = $("<p>").text(parsed[randomNumber].author);
     $("#randomQuote").html(text);
     console.log(response.text.author)
 
     for (var i = 0; i < parsed.length; i++) {
 
 
-      var randomQuote = $("<div>");
-      var q = $("<p>").text("text: " + results[i].author);
+      // var randomQuote = $("<div>");
+      // var q = $("<p>").text("text: " + results[i].author);
 
-      randomQuote.attr("src", results[i].quote.text.url);
+      // randomQuote.attr("src", results[i].quote.text.url);
 
       randomQuote.append(p);
       randomQuote.append(author);
@@ -36,3 +34,7 @@ $.ajax({
       $("#randomQuote").prepend(randomQuote);
     }
   })
+function getRandomInt (max)
+{
+  return Math.floor(Math.random() * Math.floor(max));
+}
