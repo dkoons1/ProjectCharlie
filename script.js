@@ -32,6 +32,44 @@ console.log(shoulders)
 var zero = [1];
 var ctx = document.getElementById("myChart");
 
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAXSU5J-w4May1xyijYfiDJ8OomtbtREeE",
+    authDomain: "projectcharlie-91b97.firebaseapp.com",
+    databaseURL: "https://projectcharlie-91b97.firebaseio.com",
+    projectId: "projectcharlie-91b97",
+    storageBucket: "projectcharlie-91b97.appspot.com",
+    messagingSenderId: "153103074691",
+    appId: "1:153103074691:web:c74d6b5f788862b6fae2b6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var database = firebase.database();
+
+  var connectionsRef = database.ref("/connections");
+
+  var connectedRef = database.ref(".info/connected");
+
+  connectedRef.on("value", function(snap) {
+
+    // If they are connected..
+    if (snap.val()) {
+  
+      // Add user to the connections list.
+      var con = connectionsRef.push(true);
+  
+      // Remove user from the connection list when they disconnect.
+      con.onDisconnect().remove();
+    }
+  });
+
+  connectionsRef.on("value", function(snapshot) {
+
+    // Display the viewer count in the html.
+    // The number of online users is the number of children in the connections list.
+    $("#watchers").text(snapshot.numChildren());
+  });
 
 function getExercises(){
     var queryURL2 = "https://wger.de/api/v2/exercise?muscles=" + muscleCheck.toString() +  "&license_author=wger.de&language=2"
@@ -185,11 +223,11 @@ saveChanges.on("click", function(){
     var sum = first_submit + second_submit + third_submit;
 
     localStorage.clear();
-    localStorage.setItem("muscleValue", muscleValue);
-    localStorage.setItem("first_exercise", first_exercise);
-    localStorage.setItem("second_exercise", second_exercise);
-    localStorage.setItem("third_exercise", third_exercise);
-    localStorage.setItem("sum", sum);
+    localStorage.setItem("muscleValue", muscleValue);
+    localStorage.setItem("first_exercise", first_exercise);
+    localStorage.setItem("second_exercise", second_exercise);
+    localStorage.setItem("third_exercise", third_exercise);
+    localStorage.setItem("sum", sum);
     
 
     var tableRow = $("<tr>" + 
@@ -312,6 +350,3 @@ $.ajax({
         }
     }) 
 })
-var tabledata  = localStorage.getItem( "tabledata" );
-$("#resultTable").html( tabledata ); 
-

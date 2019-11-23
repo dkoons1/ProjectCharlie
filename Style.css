@@ -1,15 +1,14 @@
+/* font-family: 'Alfa Slab One', cursive;
+font-family: 'Audiowide', cursive;
+font-family: 'Black Ops One', cursive;
+font-family: 'Amatic SC', cursive;
+font-family: 'Orbitron', sans-serif; */
+
 body {
-	background: url('background.jpg');
+	background: url("background.jpg");
+	font-family: "Orbitron", sans-serif;
 }
-.quote-button {
-	display: block;
-	align-self: center;
-	object-position: right;
-	margin: 0;
-	margin-left: auto;
-	margin-right: auto;
-	border-color: #86c232;
-}
+
 .btn-secondary {
 	align-content: center;
 	background-color: #474b4f;
@@ -25,6 +24,18 @@ body {
 .wrapper {
 	align-content: right;
 }
-#quoteButton {
-	background-color: #61892f;
+
+#head {
+	font-size: 7em;
+	font-family: "Audiowide", cursive;
+}
+
+#randomQuote {
+	color: #86c232;
+	font-style: oblique;
+	margin: auto;
+	font-size: 1.8em;
+	font-family: "Amatic SC", cursive;
+	display: block;
+	align-self: center;
 }
