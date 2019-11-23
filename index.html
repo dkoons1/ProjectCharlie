@@ -24,7 +24,9 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-
+		<!-- Firebase Links! -->
+		<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
 	</head>
 
 	<body>
@@ -43,8 +45,7 @@
 			<div id="randomQuote" type="text-center" class="getPumped text-center">
 				Get Pumped!
 			</div>
-		</div>
-
+      
 		<div class="row">
 			<div class="col-md-12">
 				<br />
@@ -108,7 +109,7 @@
 									<label for="thirdInput"
 										>How much time for this exercise? (min)</label
 									>
-									<input type="text" id="submitInput" />
+									<input type="number" id="submitInput" />
 									<input id="addThird" type="submit" class="submitButton" />
 								</div>
 							</div>
@@ -135,72 +136,44 @@
 				</div>
 
 				<!-- Workout Table -->
-				<div>
-					<table
-						style="background-color:#474b4f"
-						class="table  table table-striped text-center"
-					>
-						<thead style="color:#86C232" ;>
-							<tr>
-								<th>Muscle Group</th>
-								<th>1st Movement</th>
-								<th>2nd Movement</th>
-								<th>3rd Movement</th>
-								<th>Total Time</th>
-							</tr>
-						</thead>
 
-						<tbody
-							class="table table-bordered table-striped table-light text-left"
-							id="resultTable"
-						>
-							<tr>
-								<th scope="row">Abs</th>
-								<td>Crunches</td>
-								<td>Sit-ups</td>
-								<td>Negative Crunches</td>
-								<td>30</td>
-							</tr>
-						</tbody>
-					</table>
-					<canvas id="myChart" width="1600" height="900"></canvas>
+
+				<h3 style="color: white;">
+					<span id="watchers"></span> people are lifting it too!</span>
+				  </h3>
+				
+				
+				<div>
+				<table style="background-color:#474b4f" class="table  table table-striped text-center">
+				  <thead style="color:#86C232"; >
+					<tr>
+					  <th>Muscle Group</th>
+					  <th>1st Movement</th>
+					  <th>2nd Movement</th>
+					  <th>3rd Movement</th>
+					  <th>Total Time</th>
+					</tr>
+				  </thead>
+				
+				  <tbody class="table table-bordered table-striped table-light text-left" id="resultTable">
+				
+					<tr>
+					  <th scope="row">Abs</th>
+					  <td>Crunches</td>
+					  <td>Sit-ups</td>
+					  <td>Negative Crunches</td>
+					  <td>30</td>
+					</tr>
+				
+				  </tbody>
+				</table>
+				<canvas id="myChart" width="1600" height="900"></canvas>
 				</div>
 			</div>
 		</div>
 	</div>
   </div>
 
-  <h3 style="color: white;">
-    <span id="watchers"></span> people are visiting this site</span>
-  </h3>
-
-<!-- Workout Table -->
-<div>
-<table style="background-color:#474b4f" class="table  table table-striped text-center">
-  <thead style="color:#86C232"; >
-    <tr>
-      <th>Muscle Group</th>
-      <th>1st Movement</th>
-			<th>2nd Movement</th>
-			<th>3rd Movement</th>
-      <th>Total Time</th>
-    </tr>
-  </thead>
-
-  <tbody class="table table-bordered table-striped table-light text-left" id="resultTable">
-
-    <tr>
-      <th scope="row">Abs</th>
-      <td>Crunches</td>
-			<td>Sit-ups</td>
-			<td>Negative Crunches</td>
-      <td>30</td>
-    </tr>
-
-  </tbody>
-</table>
-<canvas id="myChart" width="1600" height="900"></canvas>
-</div>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
